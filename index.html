@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms & Privacy | OrbitOS</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* AMOLED True Black Theme */
+            --bg-main: #000000;
+            --bg-card: #0a0a0c;
+            --border-light: rgba(255, 255, 255, 0.08);
+            --text-primary: #ffffff;
+            --text-secondary: #a1a1aa;
+            --accent: #818cf8;
+            --font-main: 'Plus Jakarta Sans', sans-serif;
+            --radius-md: 20px;
+            --radius-pill: 9999px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            font-family: var(--font-main);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(129, 140, 248, 0.04) 0%, transparent 40%);
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 120px 24px 80px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(10, 10, 12, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-pill);
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            max-width: 900px;
+            z-index: 100;
+        }
+
+        .nav-logo {
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-primary);
+            text-decoration: none !important;
+        }
+
+        .nav-logo img {
+            height: 24px;
+            width: auto;
+        }
+
+        .nav-back {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-decoration: none !important;
+        }
+
+        .nav-back:hover {
+            color: var(--text-primary);
+        }
+
+        /* Header */
+        .page-header {
+            margin-bottom: 56px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -0.03em;
+            background: linear-gradient(180deg, #ffffff 0%, #a1a1aa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .page-header p {
+            color: var(--text-secondary);
+            font-size: 1.15rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Content Card */
+        .content-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 48px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .section {
+            margin-bottom: 56px;
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section h2 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: var(--text-primary);
+            letter-spacing: -0.01em;
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 12px;
+        }
+
+        .section h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 32px 0 12px 0;
+            color: #a5b4fc;
+        }
+        
+        .section h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 24px 0 8px 0;
+            color: var(--text-primary);
+        }
+
+        .section p {
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 16px;
+            font-size: 1.05rem;
+        }
+
+        .section ul {
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 24px;
+            padding-left: 24px;
+            font-size: 1.05rem;
+        }
+
+        .section li {
+            margin-bottom: 12px;
+        }
+
+        .section li strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        
+        .section code {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            font-family: monospace;
+            color: #e4e4e7;
+        }
+
+        .highlight {
+            background: rgba(129, 140, 248, 0.1);
+            border-left: 4px solid var(--accent);
+            padding: 20px 24px;
+            border-radius: 0 12px 12px 0;
+            margin: 28px 0;
+        }
+
+        .highlight p {
+            margin: 0;
+            color: #a5b4fc;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        .highlight-danger {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid #ef4444;
+        }
+
+        .highlight-danger p {
+            color: #fca5a5;
+        }
+        
+        .highlight-warning {
+            background: rgba(245, 158, 11, 0.1);
+            border-left: 4px solid #f59e0b;
+        }
+        
+        .highlight-warning p {
+            color: #fcd34d;
+        }
+
+        @media (max-width: 600px) {
+            .content-card {
+                padding: 32px 24px;
+            }
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+            .section p, .section ul {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="https://about.orbitos.lol/" class="nav-logo">
+            <img src="https://i.ibb.co/cKQHVQVz/file-000000007fa0824394789394d49eba53.png" alt="Orbit OS">
+            Orbit OS
+        </a>
+        <a href="https://about.orbitos.lol/" class="nav-back">← Back to Home</a>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <h1>Terms & Privacy</h1>
+            <p>The "please don't sue me" page. Let's actually talk about what this is, what happens to your data, and how things work under the hood.</p>
+        </div>
+
+        <div class="content-card">
+            
+            <div class="section">
+                <h2>1. What even is this?</h2>
+                <p>Hey! Just to be completely transparent right off the bat: OrbitOS is a personal hobby project. It was built by one person just messing around and trying to see what a web browser can do. It is <strong>not</strong> a real, bare-metal operating system like Windows or Linux, and it is definitely not a corporate product.</p>
+                <p>Because it's basically just a massive sandbox experiment, things might lag, bug out, or straight up crash sometimes. I'm constantly updating it and trying to make it better, but by using OrbitOS, you're agreeing that you know it's just a fun project and you're here to vibe and test things out. Don't expect enterprise-level stability rn lol.</p>
+            </div>
+
+            <div class="section">
+                <h2>2. The ONLY data I actually collect</h2>
+                <p>Let's talk about tracking. I have absolutely zero interest in spying on you. <strong>The ONLY thing I track on this site is basic web traffic using Google Analytics.</strong></p>
+                <p>I use standard GTag to collect anonymized usage stats. It literally just tells me things like how many people visited the site today, how many pages were viewed, and what devices/browsers people are using. I basically just look at it to see if the project is actually alive or if it's crashing for mobile users. I don't track what you type in the terminal, I don't see what apps you install, and I have zero access to your personal files.</p>
+            </div>
+
+            <div class="section">
+                <h2>3. Local Storage (Where your stuff actually lives)</h2>
+                <p>OrbitOS does not have some massive cloud server hoarding your data. Everything you do inside the OS is saved <strong>locally</strong> right inside your own browser.</p>
+                <p>It uses a database wrapper called OrbitDB. Since none of it is sent to a central server, it is physically impossible for me to read your notes or see your custom wallpapers. Here is exactly what the OS saves locally on your device and why it actually needs it:</p>
+                
+                <h4>A. Identity & Security</h4>
+                <p>When you first set up the OS, it saves your <code>username</code> and <code>hostname</code> so the terminal can display your custom prompt (like <code>root@orbitos</code>). If you set up a lock screen, it saves a password. But here is the cool part: we don't save your actual text password. The OS scrambles it into a crazy math puzzle (called a SHA-256 hash) and saves that instead. When you log in, it scrambles your input and checks if the puzzles match. If you forget it, you're locked out because the system literally doesn't know your real password.</p>
+
+                <h4>B. Your Personal Files (Notes, Gallery, Tasks)</h4>
+                <p>This is the meat of the OS. Any text you write in the Notes app, tasks you put in your To-Do list, or dates you save in the Calendar are saved directly as raw text in your browser database. If you use the Gallery app and import photos, the OS actually converts the image file into a massive giant wall of text (called Base64) and saves it locally. It does this so it can load the image offline later without needing a cloud drive.</p>
+
+                <h4>C. AI Chat Memory</h4>
+                <p>AI bots basically have goldfish memory by default. To make it actually hold a conversation, OrbitOS saves your <code>orbitos_ai_memory</code> (your recent chat messages) locally. When you send a new message to the bot, the OS grabs this local history file and bundles it with your new message so the AI understands the context of what you guys are talking about.</p>
+
+                <h4>D. Web Browser & Media Logs</h4>
+                <p>Just like Chrome or Edge, the internal Orbit Browser keeps a log of the URLs you visit and the ones you bookmark, but it's saved strictly inside this specific tab's database. For the Music Player (Audius), it saves the IDs and titles of songs you favorite or recently played so your playlists are actually there when you boot up the OS next time.</p>
+
+                <h4>E. Aesthetics (Themes & Customization)</h4>
+                <p>OrbitOS lets you customize almost everything. Every single tweak you make is saved. The active theme you picked, your custom font colors, terminal size, blur levels, and custom wallpapers. It saves all of this so you don't have to redo your whole setup every single time you open the site.</p>
+
+                <h4>F. API Keys & AI Persona</h4>
+                <p>If you plug in your own Google Gemini API key to unlock the AI assistant, <strong>it stays locked inside your browser.</strong> I NEVER see it. It goes straight from your browser to Google's servers only when you ask the AI a question. It also saves whatever custom persona prompt you gave the AI.</p>
+
+                <h4>G. System Junk</h4>
+                <p>The OS saves a list of what apps you installed from the APT store so the system knows which commands you're allowed to run. It also saves background diagnostic logs. If an app crashes, it writes an error log locally so you can check it in the Recovery Menu later and figure out what broke.</p>
+                
+                <h4>H. Temporary Session Data</h4>
+                <p>We use temporary <code>sessionStorage</code> to track if you're in Safe Mode and to count consecutive boot attempts. If the OS crashes 3 times in a row, this counter tells it to boot into the Recovery Menu so you can fix it. This data completely clears the second you close the tab.</p>
+            </div>
+
+            <div class="section">
+                <h2>4. External APIs (Who OrbitOS actually talks to)</h2>
+                <p>To actually be a functioning OS, it needs to pull real data from the internet. Since OrbitOS doesn't have a backend server, your browser makes network requests directly to public APIs. Here is exactly what gets sent from your device to the internet:</p>
+                <ul>
+                    <li><strong>Google Gemini (AI Assistant):</strong> When you type a prompt, your browser takes your text, your recent chat history, and your API key, and sends it directly to Google (<code>generativelanguage.googleapis.com</code>) to generate a response. If you gave the AI permission to run commands, it also sends basic info about your OS state (like what apps are installed) so it knows what it can do.</li>
+                    <li><strong>Weather & Geocoding:</strong> To get the weather, the OS pings <code>GeoJS</code> first (which checks your IP address to guess what city you're in). Then it sends that city name to the <code>Open-Meteo</code> API to fetch the actual temperature, forecast, and air quality data.</li>
+                    <li><strong>Wikipedia App:</strong> When you search for something in the Wiki app, your browser sends your exact search query to Wikipedia's official API to grab the article summary, HTML content, and thumbnail images.</li>
+                    <li><strong>Music (Audius API):</strong> When you search for a song, it sends your text query to <code>api.audius.co</code> to find the track info and stream the audio file directly to your player.</li>
+                    <li><strong>Random Utilities:</strong> Depending on the commands you run, the OS might send text to <code>MyMemory</code> for translations, ping <code>ExchangeRate-API</code> for currency conversion, check your public IP via <code>IPify</code>, send text to <code>qrserver.com</code> to generate a QR code, or use a CORS proxy (<code>allorigins.win</code>) to read RSS news feeds without getting blocked by your browser.</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>5. System Backups & Sharing (READ THIS)</h2>
+                <p>Since your stuff is stuck in the browser, OrbitOS actually has a built-in Backup & Restore utility. You can export a full backup of your system directly to your physical hard drive as a raw <code>.json</code> file. But you need to be careful with this.</p>
+                
+                <div class="highlight highlight-warning">
+                    <p><strong>WARNING:</strong> A backup file literally contains EVERYTHING you have saved in OrbitOS. Your notes, your tasks, your browsing history, your custom API keys, all of it. If you generate a backup file and share it with a friend on Discord, they can restore it on their end and see EVERYTHING you saved. Sharing your backup file is 100% on you, so be smart about it.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>6. Data Loss & System Wipes (ALSO IMPORTANT)</h2>
+                <p>Because everything lives entirely in your browser's local cache, <strong>your data is never 100% safe here.</strong></p>
+                <p>If you clear your browser history or cache, your browser will nuke your OrbitOS data. If your phone runs out of storage space, your browser might automatically delete your files to make room without asking. And sometimes, if I have to push a massive architectural update, I literally have to wipe the global storage to make the new system work.</p>
+                
+                <div class="highlight highlight-danger">
+                    <p>TL;DR: By using OrbitOS, you agree that your data can be wiped, lost, or deleted at ANY time without warning. Do NOT store anything important on here. No passwords, no crypto phrases, no school essays. I am not responsible if you lose your stuff T_T</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>7. Just use it normally</h2>
+                <p>Since this is a free hobby project running on a standard web domain, please just be cool. Don't try to inject malicious stuff, break the site for everyone else, or DDoS the servers (which, for starters, are hosted on Render, so I don't exactly expect you to have a magical Render destroying button, and secondly, I genuinely can't imagine what would inspire someone to DDoS a random hobby project in the first place). Also, most of the OS runs client-side in your own browser, so you'd basically be launching a cyberattack against... your own browser. Very productive.</p>
+            </div>
+
+            <div class="section">
+                <h2>8. Updates to this page</h2>
+                <p>I might update these terms if I add massive new features or change how things work in the background. If something huge changes, I'll usually throw an announcement up on the main landing page or in the OrbitOS News app so you know what's going on.</p>
+                <p>Anyway, that's all the boring technical stuff out of the way. Boot it up and have fun! :P</p>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
