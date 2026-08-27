@@ -26,6 +26,7 @@
             --warning: #d9a441;
             --warning-dim: rgba(217, 164, 65, 0.10);
             --success: #32a144;
+            --success-dim: rgba(50, 161, 68, 0.10);
             --font-main: 'Inter', sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
             --r-card: 20px;
@@ -105,7 +106,7 @@
             color: var(--on-surface-strong);
         }
 
-        .page-header p { color: var(--on-surface); font-size: 1.08rem; max-width: 560px; margin: 0 auto; }
+        .page-header p { color: var(--on-surface); font-size: 1.08rem; max-width: 620px; margin: 0 auto; }
 
         .content-card {
             background: var(--surface);
@@ -172,6 +173,9 @@
         .highlight-warning { background: var(--warning-dim); }
         .highlight-warning p { color: var(--warning); }
 
+        .highlight-success { background: var(--success-dim); }
+        .highlight-success p { color: var(--success); }
+
         @media (max-width: 600px) {
             .content-card { padding: 28px 22px; }
             .container { padding-top: 116px; }
@@ -193,92 +197,111 @@
     <div class="container">
         <div class="page-header">
             <h1>Terms & Privacy</h1>
-            <p>The page that exists so nobody can say they weren't warned. Here's what actually happens to your data, written so you might actually finish reading it.</p>
+            <p>The legal agreement that exists so nobody can pretend they were not warned. Here is what actually happens to your data, written with enough honesty and sarcasm that you might finish reading it.</p>
         </div>
 
         <div class="content-card">
 
             <div class="section">
-                <h2>1. What even is this</h2>
-                <p>OrbitOS is a hobby project built by one person to see how far a browser tab could be stretched into looking like an operating system. It is not Windows. It is not Linux. It is not a company, and there is no support team standing by. There's just me and however much free time I've got that week.</p>
-                <p>It's a sandbox, so yes, it lags, bugs out, and occasionally faceplants for no obvious reason. I fix what I can when I can. Using OrbitOS means you understand it's a fun experiment and not something backed by an uptime guarantee. Enterprise-grade stability was never on the table.</p>
+                <h2>1. What even is this (and why does it exist)</h2>
+                <p>OrbitOS is a solo hobby experiment built entirely on a smartphone keyboard by one developer who wanted to see how far a single browser tab could be pushed before choking the browser runtime. It is not Microsoft Windows. It is not Linux. It is not macOS. It is not a venture-backed tech startup, and there is no 24/7 enterprise support desk waiting to take your call. There is just one guy tweaking code whenever spare time permits.</p>
+                <p>Because this is a web-based browser sandbox, expect bugs, performance hitches, unpredictable edge cases, and the occasional total system crash. When something breaks, there is no IT department to rescue you, just a custom BSOD screen and an overhauled Recovery Menu. If you decide to run your business operations or store critical life documents inside a browser tab operating system coded on a phone, that is a personal choice you will have to make peace with.</p>
             </div>
 
             <div class="section">
-                <h2>2. The only data I actually collect</h2>
-                <p>Let's get this over with: I don't care what you're doing in here enough to spy on it. The only tracking on this site is basic Google Analytics.</p>
-                <p>It tells me things like how many people showed up today and whether mobile users are having a worse time than desktop ones. That's it. It does not tell me what you typed in the terminal, what apps you installed, or anything about your files. I couldn't see that even if I felt like it, which I don't.</p>
+                <h2>2. The only telemetry and tracking that exists</h2>
+                <p>Let us be completely clear: we do not care what you type in your terminal, what notes you write, or what pretend commands you execute. We do not have the time, energy, or server infrastructure to spy on your simulated terminal desktop.</p>
+                <p>The only tracking present on this site is standard Google Analytics. It tells us high-level metrics like how many people opened the page today, what general country they connected from, and whether mobile browser users are having a buggier experience than desktop users. That is it. It cannot see your terminal commands, your API keys, your local files, your installed packages, or your notes. We could not inspect your browser storage even if we felt like looking, which we do not.</p>
             </div>
 
             <div class="section">
-                <h2>3. Local storage, or where your stuff actually lives</h2>
-                <p>There is no server somewhere quietly hoarding your files. Everything you do inside OrbitOS is saved locally, in your own browser, through a database wrapper called OrbitDB. None of it touches a server, which also means I physically cannot read your notes even out of curiosity. Here's what actually gets stored, and why it needs to be.</p>
+                <h2>3. OrbitDB and local browser storage (where your stuff actually lives)</h2>
+                <p>There is no secret backend server quietly hoarding your documents. OrbitOS 4.4 runs entirely on top of browser IndexedDB through our custom <code>OrbitDB</code> storage engine, expanding local system storage capacity from the ancient 5MB limit up to a generous <strong>512MB quota</strong>. Everything stays strictly inside your own web browser. Here is the full inventory of what gets stored in your browser database and why it needs to be there:</p>
 
-                <h4>A. Identity & Security</h4>
-                <p>Setting up the OS saves your <code>username</code> and <code>hostname</code> so the terminal has something to greet you with. Set a lock screen password and the OS does not save the actual password, because that would be a genuinely bad idea. It runs it through SHA-256 and stores the scrambled result instead. Forget your password and you're locked out, because the system truly does not know what it was.</p>
+                <h4>A. Identity & Authentication</h4>
+                <p>Completing the initial setup wizard saves your chosen <code>username</code> and <code>hostname</code> so the terminal prompt knows what name to display. If you set a lock screen password, OrbitOS does not save your plain text password because storing unhashed passwords in 2026 is an absolute embarrassment. Instead, the OS passes your password through a <code>SHA-256</code> cryptographic hash and stores the scrambled digest. If you forget your password, there is no "Forgot Password" link because there is no server to mail you. You will have to reset through the Recovery Menu or clear your browser database.</p>
 
-                <h4>B. Your personal files (Notes, Gallery, Tasks)</h4>
-                <p>This is the actual point of the OS. Notes, to-do items, and calendar entries all get saved as plain text in your browser's database. Import a photo into Gallery and the OS converts it into a wall of Base64 text and stores that, so it can load the image again later without needing a cloud drive.</p>
+                <h4>B. Personal Files & Media (Notes, Tasks, Calendar, Gallery)</h4>
+                <p>Your notes, task list items, and calendar entries are saved as structured data inside IndexedDB. When you upload photos into the photo <code>Gallery</code> app, OrbitOS converts the images into Base64 encoded strings and writes them directly into <code>OrbitDB</code>. This allows your photos to persist across reboots without needing a cloud storage subscription.</p>
 
-                <h4>C. AI chat memory</h4>
-                <p>AI assistants have the memory of a goldfish by default. To fake an actual conversation, OrbitOS keeps your recent messages (<code>orbitos_ai_memory</code>) locally and sends them along with every new prompt so the AI has some idea what you two were just talking about.</p>
+                <h4>C. APT Packages & App Store State</h4>
+                <p>Applications installed via <code>apt install</code> (such as <code>notes</code>, <code>todo</code>, <code>calc</code>, <code>wiki</code>, <code>pulse</code>, <code>gallery</code>, <code>weather</code>, or retro games like Snake, Blackjack, and Tic-Tac-Toe) store their installation state and package metadata in <code>OrbitDB</code>. This ensures installed apps stay accessible in your system menu instead of disappearing every time you refresh.</p>
 
-                <h4>D. Browser & media logs</h4>
-                <p>The internal Orbit Browser keeps a history and bookmarks log, same as any browser, just scoped to this one tab's database. The Music Player saves the songs you favorite or played recently, so your playlist survives a reboot instead of resetting every time.</p>
+                <h4>D. Aesthetics & UI Themes</h4>
+                <p>Every customization choice you make gets saved locally. Whether you choose Design V2 floating windows or classic terminal CLI mode, pick from 15+ built-in themes (Glassmorphism, Fluent UI, Amoled, Glowmorphism, Cyberpunk, Classic), select custom typography fonts, or upload custom desktop wallpapers, your visual preferences are retained so you do not have to redesign your setup every morning.</p>
 
-                <h4>E. Aesthetics (themes & customization)</h4>
-                <p>Every theme, color, blur setting, and wallpaper you pick gets saved. Rebuilding your setup from scratch every time you opened a tab would be a special kind of misery, for both of us.</p>
+                <h4>E. AI Chat Memory & Custom Personas</h4>
+                <p>AI models have terrible memory retention by default. To maintain a coherent multi-turn conversation, OrbitOS stores recent chat history in IndexedDB under <code>orbitos_ai_memory</code> and attaches it to subsequent prompts. Custom AI personas you author are stored in the same local database.</p>
 
-                <h4>F. API keys & AI persona</h4>
-                <p>Plug in your own Gemini API key and it stays in your browser. I never see it. It travels straight from your browser to Google when you send a prompt, and nowhere near me. Any custom persona you wrote for the AI gets saved the same local way.</p>
+                <h4>F. Browser History & Media State</h4>
+                <p>The internal Orbit Browser maintains local history logs and bookmarks inside IndexedDB. The Audius Music Player stores your favorite tracks and recent playlists so your audio queue survives system restarts.</p>
 
-                <h4>G. System junk</h4>
-                <p>The OS tracks which apps you installed through APT so it knows what commands to allow, plus some background error logs, so when something crashes you (or future me) can actually figure out what broke.</p>
+                <h4>G. API Keys & Local Secrets</h4>
+                <p>When you enter a Google Gemini API key into OrbitOS, it stays exclusively in your local browser storage. It is never transmitted to us or stored on any server we control. It travels directly from your browser to Google endpoints when generating responses.</p>
 
-                <h4>H. Temporary session data</h4>
-                <p><code>sessionStorage</code> tracks Safe Mode status and counts failed boots in a row. Crash three times back to back and it drops you into the Recovery Menu automatically. This clears the second you close the tab.</p>
+                <h4>H. Temporary Session Data</h4>
+                <p>Temporary state tracking uses browser <code>sessionStorage</code>. This handles Safe Mode status and tracks consecutive boot failures. If OrbitOS crashes three times in a row during startup, <code>sessionStorage</code> triggers the automatic failover into Recovery Mode. Closing the browser tab wipes this temporary session counter instantly.</p>
             </div>
 
             <div class="section">
-                <h2>4. External APIs, or who OrbitOS actually talks to</h2>
-                <p>To function like an OS, it has to talk to the real internet. There's no backend sitting in the middle, your browser calls these APIs directly. Here's exactly what leaves your device and where it goes.</p>
+                <h2>4. Encrypted Backups (.orbitbak) and security warnings</h2>
+                <p>OrbitOS 4.4 features a built-in Encrypted Backup & Restore system that exports your entire operating system state into a portable <code>.orbitbak</code> archive file.</p>
+                <p>When you trigger a backup via the terminal (<code>backup</code> command), Settings, or Recovery Mode, OrbitOS uses the native Web Crypto API (<code>crypto.subtle</code>) to apply <strong>AES-GCM 256-bit encryption</strong> with <strong>PBKDF2 key derivation</strong> (100,000 hashing rounds). It bundles 100% of your system state, including notes, tasks, gallery images, custom themes, installed APT packages, AI chat history, API keys, and diagnostic logs, into a single encrypted payload on your local drive.</p>
+
+                <div class="highlight highlight-warning">
+                    <p><strong>Security Warning:</strong> An unencrypted or weak-passphrased backup archive contains your complete digital footprint inside OrbitOS. If you send your <code>.orbitbak</code> file to someone on Discord or leave it on a public computer, anyone with the passphrase can restore your system and read everything you saved. If you leak your own backup file, that is entirely a user responsibility, not an OrbitOS flaw.</p>
+                </div>
+
+                <p>Restoring a backup is a destructive action: it purges active IndexedDB state, decrypts the archive, validates payload integrity, writes the restored keys, and reboots the OS. Tampered or corrupted backup files will be rejected automatically by the cryptographic validator.</p>
+            </div>
+
+            <div class="section">
+                <h2>5. External APIs (who your browser actually talks to)</h2>
+                <p>OrbitOS is completely client-side, meaning your web browser connects directly to external third-party services. There is no middleman backend server processing your network requests. Here is the exact list of external services your browser communicates with:</p>
                 <ul>
-                    <li><strong>Google Gemini (AI assistant):</strong> Typing a prompt sends your text, your recent chat history, and your API key straight to Google's <code>generativelanguage.googleapis.com</code>. If you gave the AI permission to run commands, it also gets basic info about your OS state so it knows what's actually possible.</li>
-                    <li><strong>Weather & geocoding:</strong> Getting the weather means pinging <code>GeoJS</code> first, which checks your IP to guess your city, then handing that city name to <code>Open-Meteo</code> for the actual temperature, forecast, and air quality.</li>
-                    <li><strong>Wikipedia app:</strong> Searching the Wiki app sends your exact query to Wikipedia's own API for the article summary, HTML content, and thumbnail.</li>
-                    <li><strong>Music (Audius API):</strong> Searching for a song sends your query to <code>api.audius.co</code>, which also streams the audio straight to your player.</li>
-                    <li><strong>Assorted utilities:</strong> Depending what you run, text might go to <code>MyMemory</code> for translation, <code>ExchangeRate-API</code> for currency conversion, <code>IPify</code> to check your public IP, <code>qrserver.com</code> to generate a QR code, or through a CORS proxy (<code>allorigins.win</code>) to pull RSS feeds your browser would otherwise refuse to load.</li>
+                    <li><strong>Google Gemini AI (<code>generativelanguage.googleapis.com</code>):</strong> Typing prompts to the AI assistant sends your text input, local chat history, and personal API key directly to Google servers. If system command execution is enabled, basic system state flags are included so the AI knows what terminal operations are valid.</li>
+                    <li><strong>Weather & Geocoding:</strong> Checking the weather queries <code>GeoJS</code> (<code>geojs.io</code>) to estimate your coarse location based on your IP address, then forwards coordinates to <code>Open-Meteo</code> (<code>api.open-meteo.com</code>) to pull temperature, forecast, and air quality metrics.</li>
+                    <li><strong>Wikipedia App:</strong> Searching in the Wiki app sends your query directly to Wikipedia endpoints (<code>en.wikipedia.org</code>) to retrieve article summaries, HTML bodies, and thumbnail images.</li>
+                    <li><strong>Music Player (Audius API):</strong> Searching or playing music connects directly to <code>api.audius.co</code> to search catalog tracks and stream audio straight to your browser.</li>
+                    <li><strong>Micro-Services & Utilities:</strong> Text translations route through <code>MyMemory</code> (<code>api.mymemory.translated.net</code>), currency conversions query <code>ExchangeRate-API</code> (<code>open.er-api.com</code>), IP lookup commands query <code>IPify</code> (<code>api.ipify.org</code>), QR code generation calls <code>qrserver.com</code>, and RSS feed fetching uses the <code>AllOrigins</code> CORS proxy (<code>api.allorigins.win</code>) to bypass browser cross-origin restrictions.</li>
                 </ul>
             </div>
 
             <div class="section">
-                <h2>5. Backups & sharing (read this one)</h2>
-                <p>Since everything lives in your browser, OrbitOS has a built in Backup & Restore tool. You can export your whole system as a raw <code>.json</code> file straight to your actual hard drive. Treat that file like it's radioactive.</p>
-
-                <div class="highlight highlight-warning">
-                    <p><strong>Fair warning:</strong> a backup file contains everything you've saved. Notes, tasks, browsing history, API keys, all of it. Send that file to a friend and they can restore it and see literally everything. If you hand someone your backup and regret it later, that's a you problem, not an OrbitOS problem.</p>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2>6. Data loss & system wipes (also important)</h2>
-                <p>Since everything lives in your browser's local storage, none of it is actually safe long term.</p>
-                <p>Clear your browsing data and OrbitOS goes with it. Run low on phone storage and your browser might quietly delete it to make room without asking you first. And if I ship a large enough architecture change, sometimes I have to wipe everyone's storage just to get the new system working at all.</p>
+                <h2>6. Data volatility, browser wipes, and storage risks</h2>
+                <p>Because every byte of OrbitOS data lives locally in your browser's IndexedDB database, your data is inherently tied to your browser's lifecycle and storage policies.</p>
+                <p>If you clear your browser browsing data or site storage, OrbitOS will be completely wiped. Furthermore, mobile operating systems and privacy software may silently clean up IndexedDB storage without asking permission when your device runs low on disk space. Additionally, major architectural overhauls to OrbitOS may occasionally require resetting database schemas to ensure system stability.</p>
 
                 <div class="highlight highlight-danger">
-                    <p>Short version: your data can vanish at any point without warning, and using OrbitOS means you've accepted that. Don't store anything you'd actually miss. No passwords, no seed phrases, no unsaved school essays. If it disappears, that's between you and your browser.</p>
+                    <p><strong>The Golden Rule:</strong> Never store irreplaceable data inside OrbitOS. Do not store sensitive bank logins, cryptocurrency seed phrases, unbacked-up academic papers, or critical personal documents. If your browser wipes local storage and you do not have an encrypted <code>.orbitbak</code> file saved elsewhere, your data is gone forever.</p>
                 </div>
             </div>
 
             <div class="section">
-                <h2>7. Just use it normally</h2>
-                <p>This is a free hobby project on a regular domain, so just don't be a menace. Don't try to inject something malicious, don't try to break it for everyone else, and please don't DDoS it. It's hosted on Render, so there's no dramatic server room to bring down, and I genuinely cannot imagine what would motivate someone to DDoS a random hobby OS in the first place. Also worth noting, most of this runs client side in your own browser, so attacking it mostly means attacking yourself. Bold strategy.</p>
+                <h2>7. Interface modes (Design V2 vs Classic CLI)</h2>
+                <p>OrbitOS 4.4 introduced Design V2, bringing floating window interfaces, smooth animations, and graphical app popups for terminal commands. However, we know terminal purists exist.</p>
+                <p>If floating graphical windows offend your CLI sensibilities, you can toggle Design V2 off in Settings or switch back to classic text terminal mode and Fastfetch output at any time. Both design systems coexist, and disabling graphical interfaces will never break core terminal functionality.</p>
             </div>
 
             <div class="section">
-                <h2>8. Updates to this page</h2>
-                <p>I'll update this page when something big enough changes under the hood to matter. If it's a big deal, I'll post about it on the main site or in the OrbitOS News app so it's not a total surprise.</p>
-                <p>That's the boring part done. Go boot the thing up.</p>
+                <h2>8. Upcoming Version 4.5 and long-term support</h2>
+                <p>OrbitOS 4.5 is scheduled to release in <strong>October 2026</strong>, introducing three major built-in customization utilities: a Theme Creator, an App Creator, and a graphical File Manager for inspecting <code>OrbitDB</code> storage.</p>
+                <p>Version 4.5 marks the final release in the 4.x branch. When Version 5.0 eventually arrives, Version 4.5 will not be abandoned. It will continue to receive long-term maintenance patches, bug fixes, and security updates without forced version upgrades. Users will always retain the option to downgrade back to Version 4.5 whenever they choose.</p>
+            </div>
+
+            <div class="section">
+                <h2>9. Acceptable use policy (just use it normally)</h2>
+                <p>OrbitOS is hosted on custom domains (booting at <code>orbitos.lol</code> and documented at <code>about.orbitos.lol</code>). It is a free, solo hobby project, so please do not act like a nuisance.</p>
+                <p>Do not attempt denial of service attacks against the hosting domain, try to inject malicious scripts into the public repository, or attempt to break the infrastructure for others. Since 99% of OrbitOS executes client-side inside your own browser thread, attempting to exploit or overload the OS mostly results in crashing your own browser tab. A truly impressive self-sabotage tactic.</p>
+            </div>
+
+            <div class="section">
+                <h2>10. Updates to this agreement</h2>
+                <p>We will update this Terms & Privacy page whenever significant underlying architecture changes occur in the codebase. Major updates will be announced on <code>about.orbitos.lol</code> or posted inside the OrbitOS News app in the terminal.</p>
+
+                <div class="highlight highlight-success">
+                    <p>If you actually read all ten sections of this document, you are officially in the top 0.1% of internet users. That completes the legal formalities. Go boot up OrbitOS.</p>
+                </div>
             </div>
 
         </div>
